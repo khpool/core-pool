@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/etclabscore/go-etchash"
+	"github.com/ethereum/ethash"
 	"github.com/ethereum/go-ethereum/common"
 
 	"github.com/etclabscore/core-pool/util"
@@ -17,7 +17,7 @@ var (
 	ecip1099FBlockClassic uint64           = 11700000 // classic mainnet
 	ecip1099FBlockMordor  uint64           = 2520000  // mordor
 	uip1FEpoch            uint64           = 22       // ubiq mainnet
-	hasher                *etchash.Etchash = nil
+	hasher                *ethash.Ethash = nil
 )
 
 func (s *ProxyServer) processShare(login, id, ip string, t *BlockTemplate, params []string, stratum bool) (bool, bool) {
@@ -29,7 +29,7 @@ func (s *ProxyServer) processShare(login, id, ip string, t *BlockTemplate, param
 		} else if s.config.Network == "ubiq" {
 			hasher = etchash.New(nil, &uip1FEpoch)
 		} else if s.config.Network == "ethereum" || s.config.Network == "ropsten" {
-			hasher = etchash.New(nil, nil)
+			hasher = ethash.New(nil, nil)
 		} else {
 			// unknown network
 			log.Printf("Unknown network configuration %s", s.config.Network)
