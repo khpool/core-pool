@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hackmod/ethereum-ethash"
+	"github.com/etclabscore/go-etchash"
 	"github.com/ethereum/go-ethereum/common"
 
 	"github.com/etclabscore/core-pool/util"
